@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native';
 
-export default function NotFound() {
+export default function ExploreScreen() {
   return (
     <View>
-      <Text>404 - Page Not Found</Text>
+      <Text>🔍 Explore Screen</Text>
     </View>
   );
 }
