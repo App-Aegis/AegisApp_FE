@@ -1,240 +1,266 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { router } from 'expo-router';
 import React from 'react';
 import {
-  View,
+  Dimensions,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-  StatusBar,
+  View,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import Svg, { Circle, Ellipse, Path } from 'react-native-svg';
 
 const { width, height } = Dimensions.get('window');
 
-const Star = ({ x, y, size = 2 }: { x: number; y: number; size?: number }) => (
-  <View
-    style={[
-      styles.star,
-      {
-        left: x,
-        top: y,
-        width: size,
-        height: size,
-      },
-    ]}
-  />
-);
+type RootStackParamList = {
+  Home: undefined;
+  Login: undefined;
+  Register: undefined;
+};
 
-const Moon = () => (
-  <Svg width="60" height="60" viewBox="0 0 60 60" style={styles.moon}>
-    <Path
-      d="M45 30c0 16.569-13.431 30-30 30C6.863 60 0 53.137 0 45c0-8.284 6.716-15 15-15 8.284 0 15-6.716 15-15 0-8.137 6.863-15 15-15z"
-      fill="#FFE4B5"
-    />
-  </Svg>
-);
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const Bird = ({ color, isLeft }: { color: string; isLeft: boolean }) => (
-  <Svg
-    width="80"
-    height="60"
-    viewBox="0 0 80 60"
-    style={[styles.bird, isLeft ? styles.birdLeft : styles.birdRight]}
-  >
-    {/* Bird body */}
-    <Ellipse cx="40" cy="35" rx="25" ry="20" fill={color} />
-    {/* Bird head */}
-    <Circle cx="40" cy="20" r="15" fill={color} />
-    {/* Eye */}
-    <Circle cx={isLeft ? "35" : "45"} cy="18" r="3" fill="#000" />
-    <Circle cx={isLeft ? "36" : "44"} cy="17" r="1" fill="#FFF" />
-    {/* Beak */}
-    <Path
-      d={isLeft ? "M25 22 L30 20 L25 18 Z" : "M55 22 L50 20 L55 18 Z"}
-      fill="#FFA500"
-    />
-    {/* Wing */}
-    <Ellipse
-      cx={isLeft ? "30" : "50"}
-      cy="30"
-      rx="8"
-      ry="12"
-      fill={color}
-      opacity="0.8"
-    />
-  </Svg>
-);
+const AegisLoginScreen: React.FC = () => {
+  const navigation = useNavigation<NavigationProp>();
 
-const Branch = () => (
-  <Svg width="200" height="20" viewBox="0 0 200 20" style={styles.branch}>
-    {/* Main branch */}
-    <Ellipse cx="100" cy="10" rx="100" ry="4" fill="#8B4513" />
-    {/* Small leaves */}
-    <Ellipse cx="60" cy="6" rx="8" ry="4" fill="#228B22" />
-    <Ellipse cx="140" cy="6" rx="8" ry="4" fill="#228B22" />
-    <Ellipse cx="80" cy="14" rx="6" ry="3" fill="#228B22" />
-    <Ellipse cx="120" cy="14" rx="6" ry="3" fill="#228B22" />
-  </Svg>
-);
+  const handleSignUp = () => {
+            router.push('/auth/register');
+  };
 
-export default function Welcome() {
-  const handleStart = () => {
-    // Navigation logic here
-    console.log('Starting app...');
+  const handleSignIn = () => {
+    router.push('/auth/login');
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#f8f9fb" />
       
-      <LinearGradient
-        colors={['#1a237e', '#3949ab', '#5c6bc0']}
-        style={styles.background}
-      >
-        {/* Stars */}
-        <Star x={50} y={80} size={3} />
-        <Star x={120} y={60} size={2} />
-        <Star x={300} y={90} size={3} />
-        <Star x={280} y={120} size={2} />
-        <Star x={80} y={150} size={2} />
-        <Star x={320} y={160} size={3} />
-        <Star x={40} y={200} size={2} />
-        <Star x={200} y={140} size={2} />
-        <Star x={350} y={200} size={3} />
-        
-        {/* Moon */}
-        <Moon />
-        
-        {/* Welcome text */}
-        <Text style={styles.welcomeText}>Welcome</Text>
-        
-        {/* Main greeting */}
-        <View style={styles.greetingContainer}>
-          <Text style={styles.greetingText}>Xin chào XhuZ,</Text>
-          <Text style={styles.greetingText}>Chào mừng đến với Aegis+</Text>
+      {/* Illustration Area */}
+      <View style={styles.illustrationContainer}>
+        {/* Simple illustration placeholder - you can replace with actual SVG or image */}
+        <View style={styles.illustrationPlaceholder}>
+          <View style={styles.dashboardMockup}>
+            <View style={styles.chartArea}>
+              <View style={styles.pieChart} />
+              <View style={styles.barChart}>
+                <View style={[styles.bar, { height: 40 }]} />
+                <View style={[styles.bar, { height: 60 }]} />
+                <View style={[styles.bar, { height: 35 }]} />
+                <View style={[styles.bar, { height: 50 }]} />
+              </View>
+            </View>
+          </View>
+          
+          {/* People illustration */}
+          <View style={styles.peopleContainer}>
+            <View style={[styles.person, styles.person1]} />
+            <View style={[styles.person, styles.person2]} />
+            <View style={[styles.person, styles.person3]} />
+          </View>
+          
+          {/* Security shield */}
+          <View style={styles.shieldContainer}>
+            <Ionicons name="shield-checkmark" size={32} color="#4A90E2" />
+          </View>
         </View>
-        
-        {/* Description */}
-        <Text style={styles.descriptionText}>
-          Bảo vệ con bạn tính hồi động hiệu cực{'\n'}
-          trên mọi xã hội và trách nhiệm của{'\n'}
-          chúng tôi!
+      </View>
+
+      {/* Content Area */}
+      <View style={styles.contentContainer}>
+        {/* Logo */}
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>
+            Aegis<Text style={styles.logoPlus}>+</Text>
+          </Text>
+        </View>
+
+        {/* Subtitle */}
+        <Text style={styles.subtitle}>
+          Hàng triệu phụ huynh tin tưởng vào phần mềm Aegis+ của chúng tôi.
         </Text>
-        
-        {/* Birds on branch */}
-        <View style={styles.birdsContainer}>
-          <Branch />
-          <Bird color="#98E4D6" isLeft={true} />
-          <Bird color="#FFB6C1" isLeft={false} />
+
+        {/* Buttons */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
+            <Text style={styles.signUpButtonText}>ĐĂNG KÝ</Text>
+          </TouchableOpacity>
+
+          <View style={styles.signInContainer}>
+            <Text style={styles.signInText}>Bạn đã có tài khoản? </Text>
+            <TouchableOpacity onPress={handleSignIn}>
+              <Text style={styles.signInLink}>ĐĂNG NHẬP</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        
-        {/* Start button */}
-        <TouchableOpacity style={styles.startButton} onPress={handleStart}>
-          <Text style={styles.startButtonText}>BẮT ĐẦU</Text>
-        </TouchableOpacity>
-        
-        {/* Bottom indicator */}
-        <View style={styles.bottomIndicator} />
-      </LinearGradient>
-    </View>
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f8f9fb',
   },
-  background: {
+  illustrationContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 50,
-  },
-  star: {
-    position: 'absolute',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 50,
-    opacity: 0.8,
-  },
-  moon: {
-    position: 'absolute',
-    top: 60,
-    right: 40,
-  },
-  welcomeText: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    opacity: 0.8,
-    marginTop: 40,
-  },
-  greetingContainer: {
-    alignItems: 'center',
-    marginTop: -20,
-  },
-  greetingText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    textAlign: 'center',
-    lineHeight: 32,
-  },
-  descriptionText: {
-    fontSize: 14,
-    color: '#FFFFFF',
-    textAlign: 'center',
-    opacity: 0.9,
-    lineHeight: 20,
-    marginHorizontal: 40,
-  },
-  birdsContainer: {
-    alignItems: 'center',
     justifyContent: 'center',
-    height: 100,
-    marginVertical: 20,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 40,
   },
-  branch: {
-    position: 'absolute',
-    bottom: 20,
+  illustrationPlaceholder: {
+    width: width * 0.8,
+    height: height * 0.4,
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  bird: {
-    position: 'absolute',
-  },
-  birdLeft: {
-    left: -60,
-    bottom: 15,
-  },
-  birdRight: {
-    right: -60,
-    bottom: 15,
-  },
-  startButton: {
-    backgroundColor: '#E53E3E',
-    paddingHorizontal: 80,
-    paddingVertical: 16,
-    borderRadius: 25,
-    marginBottom: 20,
+  dashboardMockup: {
+    width: 280,
+    height: 180,
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    padding: 16,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.1,
     shadowRadius: 8,
-    elevation: 8,
+    elevation: 5,
   },
-  startButtonText: {
-    color: '#FFFFFF',
+  chartArea: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  pieChart: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#E8F4FD',
+    borderWidth: 8,
+    borderColor: '#4A90E2',
+    borderTopColor: '#FF6B6B',
+    borderRightColor: '#FF6B6B',
+  },
+  barChart: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: 8,
+  },
+  bar: {
+    width: 12,
+    backgroundColor: '#4A90E2',
+    borderRadius: 2,
+  },
+  peopleContainer: {
+    position: 'absolute',
+    bottom: -20,
+    right: -20,
+    flexDirection: 'row',
+    gap: 10,
+  },
+  person: {
+    width: 40,
+    height: 60,
+    borderRadius: 20,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+  },
+  person1: {
+    backgroundColor: '#4A90E2',
+  },
+  person2: {
+    backgroundColor: '#FF6B6B',
+  },
+  person3: {
+    backgroundColor: '#FFA726',
+  },
+  shieldContainer: {
+    position: 'absolute',
+    bottom: -10,
+    left: -10,
+    backgroundColor: '#ffffff',
+    padding: 8,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  contentContainer: {
+    paddingHorizontal: 32,
+    paddingBottom: 40,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  logoText: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#1a1a1a',
+    letterSpacing: 1,
+  },
+  logoPlus: {
+    color: '#FF6B6B',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666666',
+    textAlign: 'center',
+    lineHeight: 24,
+    marginBottom: 40,
+    paddingHorizontal: 20,
+  },
+  buttonContainer: {
+    gap: 20,
+  },
+  signUpButton: {
+    backgroundColor: '#C54A4A',
+    paddingVertical: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  signUpButtonText: {
+    color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center',
+    letterSpacing: 1,
   },
-  bottomIndicator: {
-    width: 134,
-    height: 5,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 2.5,
-    opacity: 0.3,
+  signInContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  signInText: {
+    fontSize: 14,
+    color: '#666666',
+  },
+  signInLink: {
+    fontSize: 14,
+    color: '#C54A4A',
+    fontWeight: 'bold',
   },
 });
 
+export default AegisLoginScreen;
