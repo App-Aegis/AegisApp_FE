@@ -2,6 +2,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import {
   Alert,
@@ -42,12 +43,13 @@ const LoginScreen: React.FC = () => {
   };
 
   const handleSignIn = () => {
-    if (!email || !password) {
-      Alert.alert('Lỗi', 'Vui lòng điền đầy đủ thông tin');
-      return;
-    }
-    // Handle sign in logic
-    Alert.alert('Thành công', 'Đăng nhập thành công!');
+    // if (!email || !password) {
+    //   Alert.alert('Lỗi', 'Vui lòng điền đầy đủ thông tin');
+    //   return;
+    // }
+    // // Handle sign in logic
+    // Alert.alert('Thành công', 'Đăng nhập thành công!');
+    router.push('./home-screen');
   };
 
   const handleSignUp = () => {
