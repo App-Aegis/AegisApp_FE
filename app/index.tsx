@@ -27,11 +27,11 @@ const AegisLoginScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
 
   const handleSignUp = () => {
-            router.push('/auth/register');
+            router.push('./register');
   };
 
   const handleSignIn = () => {
-    router.push('/auth/login');
+    router.push('/login');
   };
 
   return (
