@@ -1,5 +1,4 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
 import React from 'react';
 import {
     SafeAreaView,
@@ -15,13 +14,9 @@ const HomeScreen = () => {
     console.log(`See more pressed for ${section}`);
   };
 
-  const handleNavigation = (tab: string) => {
-    console.log(`Navigate to ${tab}`);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView style={styles.scrollContainer}>
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.brandTitle}>
@@ -109,45 +104,6 @@ const HomeScreen = () => {
           </View>
         </View>
       </ScrollView>
-
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity
-          style={styles.navItemActive}
-          onPress={() => handleNavigation('Home')}
-        >
-          <Ionicons name="home" size={24} color="#c53030" />
-          <Text style={styles.navTextActive}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => handleNavigation('Account')}
-        >
-          <Ionicons name="information-circle-outline" size={24} color="#9ca3af" />
-          <Text style={styles.navText}>Account</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => handleNavigation('Timing')}
-        >
-          <Ionicons name="time-outline" size={24} color="#9ca3af" />
-          <Text style={styles.navText}>Timing</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => router.push('./track')}
-        >
-          <Ionicons name="location-outline" size={24} color="#9ca3af" />
-          <Text style={styles.navText}>Tracking</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => handleNavigation('Profile')}
-        >
-          <Ionicons name="person-outline" size={24} color="#9ca3af" />
-          <Text style={styles.navText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
     </SafeAreaView>
   );
 };
@@ -156,6 +112,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f9fafb',
+  },
+  scrollContainer: {
+    flex: 1,
+    paddingBottom: 100, // Add padding to account for bottom navigation
   },
   header: {
     padding: 20,
@@ -280,7 +240,7 @@ const styles = StyleSheet.create({
   recommendedCards: {
     flexDirection: 'row',
     paddingHorizontal: 20,
-    paddingBottom: 100,
+    paddingBottom: 20,
   },
   recommendedCard: {
     backgroundColor: '#fff',
@@ -329,38 +289,6 @@ const styles = StyleSheet.create({
   mediumText: {
     fontSize: 12,
     color: '#f59e0b',
-    fontWeight: 'bold',
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#e5e7eb',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  navItem: {
-    flex: 1,
-    alignItems: 'center',
-    paddingVertical: 5,
-  },
-  navItemActive: {
-    flex: 1,
-    alignItems: 'center',
-    paddingVertical: 5,
-  },
-  navText: {
-    fontSize: 12,
-    color: '#9ca3af',
-    marginTop: 2,
-  },
-  navTextActive: {
-    fontSize: 12,
-    color: '#c53030',
-    marginTop: 2,
     fontWeight: 'bold',
   },
 });

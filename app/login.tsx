@@ -5,15 +5,15 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import {
-    Alert,
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 type RootStackParamList = {
@@ -49,7 +49,7 @@ const LoginScreen: React.FC = () => {
     // }
     // // Handle sign in logic
     // Alert.alert('Thành công', 'Đăng nhập thành công!');
-    router.push('./home-screen');
+    router.push('./welcome');
   };
 
   const handleSignUp = () => {
