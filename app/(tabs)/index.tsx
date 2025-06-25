@@ -31,7 +31,7 @@ const AegisLoginScreen: React.FC = () => {
   };
 
   const handleSignIn = () => {
-    router.push('/login');
+    router.push('/auth/login');
   };
 
   return (
