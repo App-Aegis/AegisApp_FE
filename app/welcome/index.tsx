@@ -150,7 +150,7 @@ export default function WelcomeScreen() {
   };
 
   const skipToEnd = () => {
-    router.push('/auth');
+    router.replace('/auth');
   };
 
   const renderIllustration = (type: string, colors: string[]) => {

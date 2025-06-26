@@ -65,7 +65,7 @@ const PlanScreen: React.FC = () => {
   };
 
   const handleSelectPaid = () => {
-    router.push('/plan/plan-detail');
+    router.push('/pland');
   };
 
   const renderFeature = (feature: { icon: string; text: string }, index: number, isPaid: boolean) => (
