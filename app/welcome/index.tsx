@@ -145,12 +145,12 @@ export default function WelcomeScreen() {
     if (currentSlide < slides.length - 1) {
       goToSlide(currentSlide + 1);
     } else {
-      router.replace('/auth/login');
+      router.push('/auth');
     }
   };
 
   const skipToEnd = () => {
-    router.replace('/auth/login');
+    router.push('/auth');
   };
 
   const renderIllustration = (type: string, colors: string[]) => {

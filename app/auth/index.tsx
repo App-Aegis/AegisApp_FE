@@ -85,10 +85,6 @@ const LoginScreen: React.FC = () => {
     ).start();
   }, []);
 
-  const handleBack = () => {
-    navigation.goBack();
-  };
-
   const handleFacebookSignIn = () => {
     animateButtonPress();
     Alert.alert('Facebook Sign In', 'Facebook integration would be implemented here');
@@ -148,7 +144,7 @@ const LoginScreen: React.FC = () => {
   };
 
   const handleSignUp = () => {
-    router.replace("/auth/register");
+    router.push("/reg");
   };
 
   const handleForgotPassword = () => {
@@ -199,9 +195,6 @@ const LoginScreen: React.FC = () => {
               },
             ]}
           >
-            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-              <Ionicons name="arrow-back" size={24} color="#FFFFFF" />
-            </TouchableOpacity>
           </Animated.View>
 
           {/* Logo Section */}
@@ -677,7 +670,7 @@ const styles = StyleSheet.create({
   signUpContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+      alignItems: 'center',
     paddingHorizontal: 20,
   },
   signUpText: {

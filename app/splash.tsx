@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Image, Dimensions } from 'react-native';
+import { SplashScreen } from 'expo-router';
 import { useRouter } from 'expo-router';
 
 const { width } = Dimensions.get('window');
 
-export default function SplashScreen() {
+export default function SplashScreenPage() {
   const router = useRouter();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.8)).current;
@@ -82,6 +83,7 @@ export default function SplashScreen() {
 
     // Navigate after 6 seconds + initial animation time
     const timer = setTimeout(() => {
+      SplashScreen.hideAsync();
       router.replace('/welcome');
     }, 6500);
 
