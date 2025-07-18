@@ -3,9 +3,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { router } from 'expo-router';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Alert,
+  Animated,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -14,11 +18,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Animated,
-  KeyboardAvoidingView,
-  Platform,
-  Dimensions,
 } from 'react-native';
+import { useAuth } from '../../hooks/AuthContext'; // Import AuthContext hook
 
 const { width, height } = Dimensions.get('window');
 
@@ -39,6 +40,14 @@ const LoginScreen: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
+  const { isLoggedIn, login } = useAuth(); // Use auth context
+
+  // Redirect to /admin if already logged in
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      router.replace('/admin');
+    }
+  }, [isLoggedIn]);
 
   // Animation refs
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -127,6 +136,7 @@ const LoginScreen: React.FC = () => {
     loadingAnim.setValue(0);
   };
 
+  // Updated handleSignIn to use AuthContext
   const handleSignIn = () => {
     if (!email || !password) {
       Alert.alert('Lỗi', 'Vui lòng điền đầy đủ thông tin');
@@ -136,11 +146,15 @@ const LoginScreen: React.FC = () => {
     startLoadingAnimation();
     animateButtonPress();
 
-    // Simulate API call
     setTimeout(() => {
       stopLoadingAnimation();
-      router.push('./home-screen');
-    }, 2000);
+      const success = login(email, password); // Use context login
+      if (success) {
+        router.replace('/admin'); // Go to admin dashboard
+      } else {
+        Alert.alert('Lỗi', 'Sai tài khoản hoặc mật khẩu');
+      }
+    }, 1000);
   };
 
   const handleSignUp = () => {

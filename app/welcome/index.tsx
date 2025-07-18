@@ -1,15 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'expo-router';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
+  Animated,
   Dimensions,
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
-  Animated,
-  Image,
+  View
 } from 'react-native';
-import { useRouter } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
