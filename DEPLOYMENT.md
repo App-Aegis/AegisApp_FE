@@ -147,8 +147,8 @@ npm run web             # Start web development
 ## 🔧 Troubleshooting
 
 ### Web Deployment Issues
-- Ensure `expo export:web` works locally first
-- Check build output in `web-build/` directory
+- Ensure `expo export --platform web` works locally first
+- Check build output in `dist/` directory
 - Verify all assets are properly referenced
 
 ### Mobile Build Issues

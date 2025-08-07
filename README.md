@@ -63,7 +63,7 @@ npm start
 ### **Option 2: Build for Production**
 ```bash
 npm run build:web
-# Creates 'web-build' folder with web files
+# Creates 'dist' folder with web files
 ```
 
 ---
