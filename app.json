@@ -43,14 +43,12 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "7cdd6e2b-c6de-42d2-bb5b-606fca191530"
+        "projectId": "5bcab770-6493-4c60-adb1-e2e1389cd187"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "updates": {
-      "url": "https://u.expo.dev/7cdd6e2b-c6de-42d2-bb5b-606fca191530"
-    }
+    "owner": "iamkoi"
   }
 }
