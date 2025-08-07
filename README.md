@@ -72,7 +72,7 @@ npm run build:web
 
 ### **Web Deployment (Super Easy)**
 
-**Option 1: Vercel (Recommended)**
+**Vercel Deployment**
 ```bash
 # Install Vercel
 npm install -g vercel
@@ -82,14 +82,7 @@ npm run deploy:vercel
 ```
 ✅ **Result**: Your app is live on the internet! 🌐
 
-**Option 2: Netlify**
-```bash
-# Install Netlify
-npm install -g netlify-cli
 
-# Deploy to internet
-npm run deploy:netlify
-```
 
 ### **Mobile Deployment**
 
@@ -127,8 +120,9 @@ npm run build:android
    - Click "Deploy"
 
 3. **Done!** 🎉
-   - Every time you push code → Auto-deploys to web
+   - Every time you push code → Auto-builds web version
    - Your app is always live at `your-app.vercel.app`
+   - Manual deployment: `npm run deploy:vercel`
 
 ---
 
@@ -148,7 +142,6 @@ npm run build:ios      # Build iOS simulator
 
 # Deploying
 npm run deploy:vercel  # Deploy web to Vercel
-npm run deploy:netlify # Deploy web to Netlify
 
 # Testing
 npm run lint           # Check code quality
@@ -196,8 +189,8 @@ AegisApp_FE/
 ✅ **Test on your phone** (Expo Go)  
 ✅ **Test on web browser**  
 ✅ **Build real Android app** (APK)  
-✅ **Deploy web version** (Vercel/Netlify)  
-✅ **Auto-deploy on GitHub push**  
+✅ **Deploy web version** (Vercel)  
+✅ **Auto-build on GitHub push**  
 ❌ **Publish to App Store** (requires $99/year)  
 
 ---

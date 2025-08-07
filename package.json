@@ -12,8 +12,7 @@
     "build:web": "expo export --platform web",
     "build:android": "eas build --platform android --profile preview",
     "build:ios": "eas build --platform ios --profile preview",
-    "deploy:vercel": "expo export --platform web && vercel --prod",
-    "deploy:netlify": "expo export --platform web && netlify deploy --prod --dir=dist"
+    "deploy:vercel": "expo export --platform web && vercel --prod"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
