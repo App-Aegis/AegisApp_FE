@@ -100,7 +100,7 @@ The project includes automated deployment workflows:
    - Netlify (web)
    - Build mobile APK
 
-### Required Secrets (Set in GitHub)
+### Optional Secrets (Set in GitHub for auto-deployment)
 ```
 VERCEL_TOKEN=your_vercel_token
 VERCEL_ORG_ID=your_org_id

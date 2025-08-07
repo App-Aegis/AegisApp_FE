@@ -24,7 +24,8 @@ jobs:
       - name: Build web version
         run: npm run build:web
       
-      - name: Deploy to Vercel
+      - name: Deploy to Vercel (if secrets available)
+        if: secrets.VERCEL_TOKEN != ''
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -32,7 +33,8 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./
       
-      - name: Deploy to Netlify
+      - name: Deploy to Netlify (if secrets available)
+        if: secrets.NETLIFY_AUTH_TOKEN != ''
         uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: './dist'
@@ -58,14 +60,16 @@ jobs:
         run: npm ci
       
       - name: Install EAS CLI
-        run: npm install -g @expo/eas-cli
+        run: npm install -g eas-cli
       
-      - name: Build Android APK
+      - name: Build Android APK (if token available)
+        if: secrets.EXPO_TOKEN != ''
         run: eas build --platform android --profile preview --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       
-      - name: Upload APK artifact
+      - name: Upload APK artifact (if built)
+        if: secrets.EXPO_TOKEN != ''
         uses: actions/upload-artifact@v4
         with:
           name: android-apk
