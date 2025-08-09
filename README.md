@@ -2,24 +2,49 @@
 
 A React Native app built with Expo that works on **mobile** and **web**!
 
-## 🚀 Quick Start (5 minutes)
+## 🏃‍♂️ **How to Run Our Project**
 
-### 1. Install Dependencies
+### **Prerequisites (One-time setup)**
 ```bash
+# Make sure you have Node.js installed (version 18 or higher)
+node --version
+
+# Install Expo CLI globally
+npm install -g @expo/cli
+
+# Install EAS CLI for mobile builds
+npm install -g eas-cli
+```
+
+### **🚀 Quick Start (5 minutes)**
+
+#### **Step 1: Install Project Dependencies**
+```bash
+# Navigate to project folder
+cd AegisApp_FE
+
+# Install all required packages
 npm install
 ```
 
-### 2. Start the App
+#### **Step 2: Start Development Server**
 ```bash
+# Start the Expo development server
 npm start
 ```
 
-### 3. Choose How to Test
+**What happens:**
+- Terminal shows a QR code
+- Metro bundler starts (React Native's build tool)
+- Your app is ready to test!
 
-**📱 On Your Phone (Easiest):**
+#### **Step 3: Choose How to Test**
+
+**📱 On Your Phone (Easiest & Recommended):**
 1. Download "Expo Go" app from App Store/Google Play
-2. Scan the QR code that appears in your terminal
-3. Your app opens on your phone! 🎉
+2. Make sure your phone and computer are on the same WiFi
+3. Scan the QR code with Expo Go app
+4. Your app opens on your phone! 🎉
 
 **💻 On Your Computer:**
 - Press `w` → Opens in web browser
@@ -28,16 +53,40 @@ npm start
 
 ---
 
-## 📱 Testing on Mobile
+## 🔧 **Development Workflow**
 
-### **Option 1: Real Phone (Recommended)**
+### **Making Changes**
+1. **Edit your code** in any file (e.g., `app/home/home.tsx`)
+2. **Save the file** - changes auto-reload on your phone/browser
+3. **See changes instantly** - no need to restart!
+
+### **Hot Reload Features**
+- ✅ **Code changes** → Auto-reload
+- ✅ **Style changes** → Instant update
+- ✅ **New screens** → Auto-add to navigation
+- ✅ **Asset changes** → Refresh to see
+
+---
+
+## 📱 **Testing on Mobile**
+
+### **Option 1: Real Phone with Expo Go (Recommended)**
 ```bash
 npm start
 # Scan QR code with Expo Go app
 ```
 
-### **Option 2: Build Real App File**
+**Benefits:**
+- Real device testing
+- Camera, GPS, sensors work
+- Performance is accurate
+- Easy to test with others
+
+### **Option 2: Build Real App File (APK)**
 ```bash
+# Login to your Expo account first
+eas login
+
 # Build Android APK (takes 5-10 minutes)
 npm run build:android
 
@@ -52,7 +101,7 @@ npm run build:ios
 
 ---
 
-## 🌐 Testing on Web
+## 🌐 **Testing on Web**
 
 ### **Option 1: Local Development**
 ```bash
@@ -66,9 +115,15 @@ npm run build:web
 # Creates 'dist' folder with web files
 ```
 
+**Web Features:**
+- ✅ Works in all modern browsers
+- ✅ Responsive design
+- ✅ Touch gestures work
+- ✅ Keyboard navigation
+
 ---
 
-## 🚀 Deploy to Internet (Free Forever!)
+## 🚀 **Deploy to Internet (Free Forever!)**
 
 ### **Web Deployment (Super Easy)**
 
@@ -82,7 +137,11 @@ npm run deploy:vercel
 ```
 ✅ **Result**: Your app is live on the internet! 🌐
 
-
+**Manual Deployment:**
+1. Go to [vercel.com](https://vercel.com)
+2. Sign up with GitHub
+3. Import your `AegisApp_FE` repo
+4. Click "Deploy"
 
 ### **Mobile Deployment**
 
@@ -101,7 +160,7 @@ npm run build:android
 
 ---
 
-## 🔄 Auto-Deploy (Set Once, Deploy Forever)
+## 🔄 **Auto-Deploy (Set Once, Deploy Forever)**
 
 ### **Connect to GitHub + Vercel (Recommended)**
 
@@ -126,7 +185,7 @@ npm run build:android
 
 ---
 
-## 📋 Common Commands
+## 📋 **Common Commands**
 
 ```bash
 # Development
@@ -149,42 +208,38 @@ npm run lint           # Check code quality
 
 ---
 
-## 🛠️ Troubleshooting
+## 🛠️ **Troubleshooting**
 
 ### **"Expo Go not working"**
 - Make sure your phone and computer are on same WiFi
 - Try using tunnel mode: `npm start --tunnel`
+- Check firewall settings
 
 ### **"Build failed"**
 - Make sure you're logged in: `eas login`
 - Check your internet connection
 - Try again in 5 minutes
+- Clear cache: `expo r -c`
 
 ### **"Web not loading"**
 - Check if port 19006 is free
-- Try `npm run build:web` then open `web-build/index.html`
+- Try `npm run build:web` then open `dist/index.html`
+- Clear browser cache
 
 ### **"Mobile build taking forever"**
 - Normal! First build takes 10-15 minutes
 - Subsequent builds are faster
+- Check EAS dashboard for progress
+
+### **"npm install failed"**
+- Clear npm cache: `npm cache clean --force`
+- Delete `node_modules` and `package-lock.json`
+- Run `npm install` again
 
 ---
 
-## 📁 Project Structure
 
-```
-AegisApp_FE/
-├── app/                 # Your app screens (routes)
-├── components/          # Reusable components
-├── assets/             # Images, fonts, etc.
-├── constants/          # Colors, configs
-├── hooks/              # Custom React hooks
-└── package.json        # Dependencies & scripts
-```
-
----
-
-## 🎯 What You Can Do
+## 🎯 **What You Can Do**
 
 ✅ **Test on your phone** (Expo Go)  
 ✅ **Test on web browser**  
@@ -193,15 +248,25 @@ AegisApp_FE/
 ✅ **Auto-build on GitHub push**  
 ❌ **Publish to App Store** (requires $99/year)  
 
----
 
-## 🆘 Need Help?
 
-1. **Check the logs** in your terminal
-2. **Google the error message**
-3. **Ask in Expo Discord**: [chat.expo.dev](https://chat.expo.dev)
-4. **Check Expo docs**: [docs.expo.dev](https://docs.expo.dev)
+## 🎬 **Quick Demo**
 
----
+```bash
+# 1. Get the project running
+git clone <your-repo>
+cd AegisApp_FE
+npm install
+npm start
+
+# 2. Test on phone
+# Scan QR code with Expo Go
+
+# 3. Test on web
+# Press 'w' in terminal
+
+# 4. Deploy to internet
+npm run deploy:vercel
+```
 
 **🎉 You're all set! Your app works on mobile AND web!**
